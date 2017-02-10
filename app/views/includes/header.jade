@@ -1,0 +1,112 @@
+.container
+    .row
+        .page-header.clearfix
+            h1 #{title}
+            .col-md-2
+                small.text-primary 网站统计管理系统MIS
+            .col-md-10
+                form(method="GET",action="/website/search",class="form-inline clearfix",role="form")
+                    input(type="hidden",name="is_admin",value=is_admin)
+                    .col-md-4
+                        label.col-xs-3.control-label(style="line-height:34px") 作者
+                        .col-xs-6
+                            if keyword
+                                input(type="text",class="form-control",name="builder",placeholder="请输入姓名",value=keyword[2])
+                            else
+                                input(type="text",class="form-control",name="builder",placeholder="请输入姓名")
+                    .col-md-4
+                        label.col-xs-3.control-label(style="line-height:34px")  产品
+                        .col-xs-6
+                            if keyword
+                                input(type="text",class="form-control",name="product",placeholder="请输入产品名",value=keyword[1])
+                            else
+                                input(type="text",class="form-control",name="product",placeholder="请输入产品名")
+                    .col-md-4
+                        label.col-xs-3.control-label(style="line-height:34px")  网址
+                        .col-xs-6
+                            if keyword
+                                input(type="text",name="name",class="form-control",placeholder="请输入网址不要带http://",value=keyword[0])
+                            else
+                                input(type="text",name="name",class="form-control",placeholder="请输入网址不要带http://")
+                        .col-md-2.pull-right
+                            button.btn.btn-default 搜索    
+        nav.navbar.navbar-default(role="navigation")
+            .navbar-header
+                a.navbar-brand(href="/") Home
+            .collapse.navbar-collapse#headernav
+                ul.nav.navbar-nav
+                    li.dropdown(class={active:(currentUrl === '/admin/category/new' ||currentUrl === '/admin/category/list'||currentUrl === '/admin/movie/new' ||currentUrl === '/admin/movie/new')||currentUrl === '/admin/movie/list' })
+                        a.dropdown-toggle(href="/imovie",data-toggle="dropdown") MOV
+                            b.caret
+                        ul.dropdown-menu
+                            li(class={active: currentUrl === '/admin/category/new'})
+                                a(href="/admin/category/new") 添加分类
+                            li(class={active: currentUrl === '/admin/category/list'})
+                                a(href="/admin/category/list") 查看分类
+                            li(class={active: currentUrl === '/admin/movie/new'})
+                                a(href="/admin/movie/new") 添加MOV
+                            li(class={active: currentUrl === '/admin/movie/list'})
+                                a(href="/admin/movie/list") 查看MOV
+                    li
+                        a(href="/lantern") APP
+                    li.dropdown(id='webadmin',class={active:(currentUrl === '/admin/user/list' ||currentUrl === '/admin/website/new'||currentUrl === '/admin/website/list') })
+                        a.dropdown-toggle(href="#",data-toggle="dropdown") 网站后台
+                            b.caret
+                        ul.dropdown-menu
+                            li
+                                a.cursor(id="adminloginid") 添加管理员
+                            li(class={active: currentUrl === '/admin/user/list'})
+                                a(href="/admin/user/list") 查看用户
+                            li(class={active: currentUrl === '/admin/website/new'})
+                                a(href="/admin/website/new") 添加网站
+                            li(class={active: currentUrl === '/admin/website/list'})
+                                a(href="/admin/website/list") 查看网站
+                            li
+                                a(href="/admin/website/excel") 导出报表
+.navbar.navbar-default.navbar-fixed-bottom
+    .container
+        .navbar-header
+            a.navbar-brand(href="/") 网站统计管理系统CMS
+        if user
+            p.navbar-text.navbar-right
+                span 欢迎您,#{user.name}
+                span &nbsp;|&nbsp;
+                a.navbar-link(href="/logout") 退出
+        else
+            p.navbar-text.navbar-right
+                a.navbar-link(href="#",data-toggle="modal",data-target="#signupModal") 注册
+                span &nbsp;|&nbsp;
+                a.navbar-link(href="#",data-toggle="modal",data-target="#signinModal") 登录
+#signupModal.modal.fade
+    .modal-dialog
+        .modal-content
+            form(method="POST",action="/user/signup")
+                .modal-header 注册
+                    .modal-body
+                        .form-group
+                            label(for="signupName") 用户名
+                            input#signupName.form-control(name="user[name]",type="text")
+                            input#inputrole(type="hidden",name="inputrole")
+                        .form-group
+                            label(for="signupPassword") 密码
+                            input#signupPassword.form-control(name="user[password]",type="password")
+                        .modal-footer
+                            button.btn.btn-default(type="button",data-dismiss="modal") 关闭
+                            button.btn.btn-success(type="submit") 提交
+#signinModal.modal.fade
+    .modal-dialog
+        .modal-content
+            form(method="POST",action="/user/signin")
+                .modal-header 登录
+                    .modal-body
+                        .form-group
+                            label(for="signinName") 用户名
+                            input#signupName.form-control(name="user[name]",type="text")
+                        .form-group
+                            label(for="signinPassword") 密码
+                            input#signupPassword.form-control(name="user[password]",type="password")
+                        .modal-footer
+                            button.btn.btn-default(type="button",data-dismiss="modal") 关闭
+                            button.btn.btn-success(type="submit") 提交
+
+

@@ -1,0 +1,30 @@
+extends ../layout
+block content
+    .container
+        .row
+            form#updateform.form-horizontal
+                input(type="hidden",name="user[_id]",value=user._id)
+                .form-group
+                    label.col-sm-3.control-label(for="inputName") 用户名
+                    .col-sm-9
+                        input#inputName.form-control(type="text",name="user[name]",value=user.name,readonly)
+                .form-group
+                    label.col-sm-3.control-label(for="inputPassword") 密码
+                    .col-sm-9
+                        input#inputYear.form-control(type="password",name="user[password]",value='')
+                .form-group
+                    label.col-sm-3.control-label 权限
+                    label.col-sm-offset-1.radio-inline
+                        input(type="radio",name="user[role]",value=0,checked=user.role.toString()=='0')
+                        | 普通用户
+                    label.col-sm-offset-1.radio-inline
+                        input(type="radio",name="user[role]",value=15,checked=user.role.toString()=='15')
+                        | 后台用户
+                    label.col-sm-offset-1.radio-inline
+                        input(type="radio",name="user[role]",value=51,checked=user.role.toString()=='51')
+                        | 超级用户
+                .form-group
+                    .col-sm-offset-2.col-sm-9
+                    button#updatebutton.btn.btn-default(type="button",title="User Update",data-container="body",data-toggle="popover",data-placement="left") 修改
+        script(src="/js/user.js",defer)
+                               

@@ -1,0 +1,72 @@
+extends ../layout
+block content
+    .container
+        .row
+            table.table.table-hover.table-bordered
+                thead
+                    tr
+                        th 网站名称
+                        th 建设者
+                        th 网站类别
+                        th 网站产品
+                        th 语种
+                        th 账号
+                        th 密码
+                        th 服务器ip
+                        th 当前状态
+                        th 被K日期
+                        th first询盘日
+                        th 是否稳定
+                        th 上线时间
+                        th 录入时间
+                        th 修改
+                        th 删除
+                tbody
+                    each item in websites
+                        tr(class="item-id-#{item._id}")
+                            td #{item.name}
+                            td #{item.builder}
+                            td #{item.webcategory}
+                            td #{item.product}
+                            td #{item.language}
+                            td #{item.account}
+                            td #{item.password}
+                            td #{item.serverip}
+                            td #{item.status}
+                            if item.kDate
+                                td #{moment(item.kDate).format('YYYY-MM-DD hh:mm:ss')}
+                            else
+                                td &nbsp;
+                            if item.firstDate
+                                td #{moment(item.firstDate).format('YYYY-MM-DD hh:mm:ss')}
+                            else
+                                td &nbsp;
+                            if item.isStable!=null
+                                td #{item.isStable ? '稳定':'不稳定'}
+                            else
+                                td 
+                            if item.uptime
+                                td #{moment(item.uptime).format('YYYY-MM-DD hh:mm:ss')}
+                            else
+                                td &nbsp;
+                            td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
+                            td
+                                a.btn.btn-default(target="_blank",href="/admin/website/update/#{item._id}") 修改
+                            td
+                                button.btn.btn-danger.del(type="button",data-id="#{item._id}",title="User Delete",data-container="body",data-toggle="popover",data-placement="left") 删除
+        - var pre = currentPage -2
+        - if(pre == -1){
+        -  pre = 0
+        - }
+        - var latter = currentPage
+        - if(totalPage == 0){
+        - latter = 0
+        - }else if(latter >= totalPage){
+        - latter = totalPage - 1
+        -}
+        ul.pager
+            li
+                a(href='/admin/website/list?p=#{pre}&is_admin='+is_admin+'&name='+name+'&product='+product+'&builder='+builder+'') Previous
+            li
+                a(href='/admin/website/list?p=#{latter}&is_admin='+is_admin+'&name='+name+'&product='+product+'&builder='+builder+'') Next
+        script(src="/js/ws.js")

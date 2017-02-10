@@ -1,0 +1,14 @@
+doctype
+html
+    head
+        meta(charset="utf-8")
+        title #{title}
+        link(href="/libs/bootstrap/dist/css/bootstrap.min.css",rel="stylesheet")
+        link(href="/css/css.css",rel="stylesheet")
+        link(href="/css/animate.css",rel="stylesheet")
+        script(src="/libs/jquery/dist/jquery.min.js")
+        script(src="/libs/bootstrap/dist/js/bootstrap.min.js")
+        script(src="/js/header.js")
+    body
+        include ./includes/header
+        block content

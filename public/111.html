@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<script type="text/javascript" src="./js/zepto.min.js"></script>
+	<script type="text/javascript" src="./js/touch.js"></script>
+	<link rel="stylesheet" type="text/css" href="./style/animate.css">
+	<link rel="stylesheet" type="text/css" href="./style/css.css">
+	<title>Gallery</title>
+</head>
+<body>
+	<ul class="img-container" id="container">
+	
+	</ul>
+	<div class="large animated bounceIn hide" id="large_container">
+		<img id="large_img">
+	</div>
+	<script>
+		var total = 17;
+		var zWin = $(window);
+		var render = function (){
+			var padding = 2;
+			var winWidth = zWin.width();
+			var picWidth = Math.floor((winWidth-padding*3)/4);
+			var tmpl = '';
+			var p = padding;
+			if(i%4==1){
+				p = 0;
+			}
+			for(var i =1;i<=total;i++){
+				var imgSrc = './img/'+i+'.jpg';
+				tmpl += '<li data-id="'+i+'" class="animated rubberBand" style="width:'+picWidth+'px;height:'+picWidth+'px;padding-top:'+padding+'px;padding-left:'+p+'px;"><canvas id="canvas_'+i+'"></canvas></li>';
+				var imgO = new Image();
+				imgO.index = i;
+				imgO.onload = function (){
+					var canvas = $('#canvas_'+this.index)[0].getContext('2d');
+					canvas.width = this.width;
+					canvas.height = this.height;
+					canvas.drawImage(this,0,0);
+				}
+				imgO.src = imgSrc;
+			}
+			$('#container').html(tmpl);
+		}
+		render();
+		var cid ;
+		var largeImg = $('#large_img');
+		var domImage = largeImg[0];
+		$('#container').delegate('li','tap',function(){
+			var _id =cid= $(this).data('id');
+			loadImg(_id);
+		})
+		$('#large_container').tap(function(){
+			$(this).hide();
+		}).swipeLeft(function(){
+			cid ++;
+			if(cid > total){cid = total;}else{
+				loadImg(cid,function(){
+					domImage.addEventListener('webkitAnimationEnd',function(){
+						largeImg.removeClass('animated bounceInRight');
+						domImage.removeEventListener('webkitAnimationEnd');
+					},false);
+					largeImg.addClass('animated bounceInRight');
+				});
+			}
+			
+		}).swipeRight(function(){
+			cid --;
+			if(cid <1 ){cid = 1;}else{
+				loadImg(cid,function(){
+					domImage.addEventListener('webkitAnimationEnd',function(){
+						largeImg.removeClass('animated bounceInLeft');
+						domImage.removeEventListener('webkitAnimationEnd');
+					},false);
+					largeImg.addClass('animated bounceInLeft');
+				});
+			}
+		});
+		function loadImg(id,callback){
+			
+			$('#large_container').show();
+			var imgLargeSrc = './img/'+id+'.large.jpg';
+			var imgO = new Image();			
+				imgO.onload = function (){
+					var w = this.width,
+					h = this.height,
+					wW = zWin.width(),
+					wH = zWin.height();
+					var realw = wH*w/h;	
+					var realH = wW*h/w;
+					var paddingLeft = parseInt((wW-realw)/2);
+					var paddingTop = parseInt((wH-realH)/2);
+					
+					largeImg.css({'width':'auto','height':'auto','padding-left':'0px','padding-top':'0px;'});
+					if(h/w > 1.2){
+						largeImg.attr('src',imgLargeSrc).css({'height':wH+'px','paddingLeft':paddingLeft+'px'});
+					}else{
+						largeImg.attr('src',imgLargeSrc).css({'width':wW+'px','paddingTop':paddingTop+'px'});
+					}
+					callback&&callback();
+				}
+				imgO.src=imgLargeSrc;
+				
+			}
+	</script>
+</body>
+</html>

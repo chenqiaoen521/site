@@ -1,0 +1,81 @@
+body{
+    -webkit-animation:bgmove 8s ease-in-out infinite alternate;
+    -moz-animation:bgmove 8s ease-in-out infinite alternate;
+    -ms-animation:bgmove 8s ease-in-out infinite alternate;
+    -o-animation:bgmove 8s ease-in-out infinite alternate;
+    animation:bgmove 8s ease-in-out infinite alternate;
+    background-size:cover;
+    color:#f8f8f8;
+}
+.popover-title,.popover-content{
+    color:#555;
+    font-weight: 300;
+}{
+
+}
+.text-primary{
+    color:#f8f8f8;
+}
+.col-md-5{
+    background:#f8f8f8;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+            border-radius: 4px;
+}
+
+@-webkit-keyframes bgmove{
+    0%{
+        background-image: url('https://img.alicdn.com/tps/TB1h9xxIFXXXXbKXXXXXXXXXXXX.jpg');
+    }
+    50%{
+        background-image: url('https://img.alicdn.com/tps/TB1pfG4IFXXXXc6XXXXXXXXXXXX.jpg');
+    }
+    100%{
+        background-image: url('https://img.alicdn.com/tps/TB1sXGYIFXXXXc5XpXXXXXXXXXX.jpg');
+    }
+}
+@-moz-keyframes bgmove{
+    0%{
+        background-image: url('https://img.alicdn.com/tps/TB1h9xxIFXXXXbKXXXXXXXXXXXX.jpg');
+    }
+    50%{
+        background-image: url('https://img.alicdn.com/tps/TB1pfG4IFXXXXc6XXXXXXXXXXXX.jpg');
+    }
+    100%{
+        background-image: url('https://img.alicdn.com/tps/TB1sXGYIFXXXXc5XpXXXXXXXXXX.jpg');
+    }
+}
+@-ms-keyframes bgmove{
+    0%{
+        background-image: url('https://img.alicdn.com/tps/TB1h9xxIFXXXXbKXXXXXXXXXXXX.jpg');
+    }
+    50%{
+        background-image: url('https://img.alicdn.com/tps/TB1pfG4IFXXXXc6XXXXXXXXXXXX.jpg');
+    }
+    100%{
+        background-image: url('https://img.alicdn.com/tps/TB1sXGYIFXXXXc5XpXXXXXXXXXX.jpg');
+    }
+}
+@-o-keyframes bgmove{
+    0%{
+        background-image: url('https://img.alicdn.com/tps/TB1h9xxIFXXXXbKXXXXXXXXXXXX.jpg');
+    }
+    50%{
+        background-image: url('https://img.alicdn.com/tps/TB1pfG4IFXXXXc6XXXXXXXXXXXX.jpg');
+    }
+    100%{
+        background-image: url('https://img.alicdn.com/tps/TB1sXGYIFXXXXc5XpXXXXXXXXXX.jpg');
+    }
+}
+@keyframes bgmove{
+    0%{
+        background-image: url('https://img.alicdn.com/tps/TB1h9xxIFXXXXbKXXXXXXXXXXXX.jpg');
+    }
+    50%{
+        background-image: url('https://img.alicdn.com/tps/TB1pfG4IFXXXXc6XXXXXXXXXXXX.jpg');
+    }
+    100%{
+        background-image: url('https://img.alicdn.com/tps/TB1sXGYIFXXXXc5XpXXXXXXXXXX.jpg');
+    }
+}

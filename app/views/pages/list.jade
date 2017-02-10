@@ -1,0 +1,41 @@
+extends ../layout
+block content
+    .container
+        .row
+            table.table.table-hover.table-bordered
+                thead
+                    tr
+                        th 电影名称
+                        th 电影导演
+                        th 所属国家
+                        th 录入时间
+                        th pv
+                        th 查看
+                        th 更新
+                        th 删除
+                tbody
+                    each movie in movies
+                        tr(class="item-id-#{movie._id}")
+                            td #{movie.title}
+                            td #{movie.doctor}
+                            td #{movie.country}
+                            td #{moment(movie.meta.createAt).format('MM/DD/YYYY')}
+                            td #{movie.pv}
+                            td
+                                a(target="_blank",href="/movie/#{movie._id}")查看
+                            td
+                                a(target="_blank",href="/admin/movie/update/#{movie._id}") 修改
+                            td
+                                button.btn.btn-danger.del(type="button",data-id="#{movie._id}",title="User Delete",data-container="body",data-toggle="popover",data-placement="left") 删除
+        ul.pagination
+            -for(var i =0 ;i<totalPage;i++){
+            -if(i == currentPage){
+            li.active
+                span #{i+1}
+            - }
+            -else{
+            li
+                a(href='/admin/movie/list?p=#{i}') #{i+1}
+            - }
+            - }
+        script(src="/js/admin.js")

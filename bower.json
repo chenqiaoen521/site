@@ -1,0 +1,25 @@
+{
+  "name": "imooc",
+  "description": "imooc movie",
+  "main": "",
+  "authors": [
+    "wuzhe"
+  ],
+  "license": "wuzhe123",
+  "keywords": [
+    "imooc"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}

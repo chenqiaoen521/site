@@ -1,0 +1,24 @@
+extends ../lantern
+block content
+    .music
+        img(src="/images/music_pointer.png")
+        img(id="music",class="play",src="/images/music_disc.png")
+    div.page#page1
+        div.bg
+        div.p1_lantern 点击屏幕 <br> 开启好运2016
+        div.p1_imooc
+        div.p1_words 2016年慕课网新年特献
+    div.page#page2
+        div.bg.p2_bg_loading
+        div.bg
+        div.p2_circle
+        div.p2_2016
+    div.page#page3
+        div.bg
+        div.p3_logo
+        div.p3_title
+        div.p3_second
+        div.p3_first
+        div.p3_blessing
+    audio(autoplay="true")
+        source(src="happynewyear.mp3",type="",media="audio/mpeg")

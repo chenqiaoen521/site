@@ -1,0 +1,150 @@
+extends ../layout
+block content
+    .container
+        .row
+            table.table.table-hover.table-bordered
+                thead
+                    tr
+                        if sort
+                            if sort==-1
+                                if sortid == 'name'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="name") 网站名称
+                                else
+                                    th.thhover(data-id="name") 网站名称
+                                if sortid == 'builder'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="builder") 建设者
+                                else
+                                    th.thhover(data-id="builder") 建设者
+                                if sortid == 'webcategory'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="webcategory") 网站类别
+                                else
+                                    th.thhover(data-id="webcategory") 网站类别
+                                if sortid == 'product'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="product") 网站产品
+                                else
+                                    th.thhover(data-id="product") 网站产品
+                                if sortid == 'language'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="language") 语种
+                                else
+                                    th.thhover(data-id="language") 语种
+                                if sortid == 'serverip'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="serverip") 服务器ip
+                                else
+                                    th.thhover(data-id="serverip") 服务器ip
+                                if sortid == 'uptime'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="uptime") 上线时间
+                                else
+                                    th.thhover(data-id="uptime") 上线时间
+                                if sortid == 'status'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="status") 当前状态
+                                else
+                                    th.thhover(data-id="status") 当前状态
+                                if sortid == 'kDate'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="kDate") 被K日期
+                                else
+                                    th.thhover(data-id="kDate") 被K日期
+                                if sortid == 'firstDate'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="firstDate") first询盘日
+                                else
+                                    th.thhover(data-id="firstDate") first询盘日
+                                if sortid == 'isStable'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="isStable") 是否稳定
+                                else
+                                    th.thhover(data-id="isStable") 是否稳定
+                            else if sort == 1
+                                if sortid == 'name'
+                                    th.thhover.glyphicon.glyphicon-chevron-up(data-id="name") 网站名称
+                                else
+                                    th.thhover(data-id="name") 网站名称
+                                if sortid == 'builder'
+                                    th.thhover.glyphicon.glyphicon-chevron-up(data-id="builder") 建设者
+                                else
+                                    th.thhover(data-id="builder") 建设者
+                                if sortid == 'webcategory'
+                                    th.thhover.glyphicon.glyphicon-chevron-up(data-id="webcategory") 网站类别
+                                else
+                                    th.thhover(data-id="webcategory") 网站类别
+                                if sortid == 'product'
+                                    th.thhover.glyphicon.glyphicon-chevron-up(data-id="product") 网站产品
+                                else
+                                    th.thhover(data-id="product") 网站产品
+                                if sortid == 'language'
+                                    th.thhover.glyphicon.glyphicon-chevron-up(data-id="language") 语种
+                                else
+                                    th.thhover(data-id="language") 语种
+                                if sortid == 'serverip'
+                                    th.thhover.glyphicon.glyphicon-chevron-up(data-id="serverip") 服务器ip
+                                else
+                                    th.thhover(data-id="serverip") 服务器ip
+                                if sortid == 'uptime'
+                                    th.thhover.glyphicon.glyphicon-chevron-up(data-id="uptime") 上线时间
+                                else
+                                    th.thhover(data-id="uptime") 上线时间
+                                if sortid == 'status'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="status") 当前状态
+                                else
+                                    th.thhover(data-id="status") 当前状态
+                                if sortid == 'kDate'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="kDate") 被K日期
+                                else
+                                    th.thhover(data-id="kDate") 被K日期
+                                if sortid == 'firstDate'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="firstDate") first询盘日
+                                else
+                                    th.thhover(data-id="firstDate") first询盘日
+                                if sortid == 'isStable'
+                                    th.thhover.glyphicon.glyphicon-chevron-down(data-id="isStable") 是否稳定
+                                else
+                                    th.thhover(data-id="isStable") 是否稳定    
+                        else
+                            th.thhover(data-id="name") 网站名称
+                            th.thhover(data-id="builder") 建设者
+                            th.thhover(data-id="webcategory") 网站类别
+                            th.thhover(data-id="product") 网站产品
+                            th.thhover(data-id="language") 语种
+                            th.thhover(data-id="serverip") 服务器ip
+                            th.thhover(data-id="uptime") 上线时间
+                            th.thhover(data-id="status") 当前状态
+                            th.thhover(data-id="kDate") 被K日期
+                            th.thhover(data-id="firstDate") first询盘日
+                            th.thhover(data-id="isStable") 是否稳定
+                tbody
+                    each item in websites
+                        tr(class="item-id-#{item._id}")
+                            td #{item.name}
+                            td #{item.builder}
+                            td #{item.webcategory}
+                            td #{item.product}
+                            td #{item.language}
+                            td #{item.serverip}
+                            if item.uptime
+                                td #{moment(item.uptime).format('YYYY-MM-DD hh:mm:ss')}
+                            else
+                                td &nbsp;
+                            td #{item.status}
+                            if item.kDate
+                                td #{moment(item.kDate).format('YYYY-MM-DD hh:mm:ss')}
+                            else
+                                td &nbsp;
+                            if item.firstDate
+                                td #{moment(item.firstDate).format('YYYY-MM-DD hh:mm:ss')}
+                            else
+                                td &nbsp;
+                            if item.isStable!=null
+                                td #{item.isStable ? '稳定': '不稳定'}
+                            else
+                                td
+        - var pre = currentPage -2
+        - if(pre == -1){
+        -  pre = 0
+        - }
+        - var latter = currentPage
+        - if(latter >= totalPage){
+        - latter = totalPage - 1
+        - }
+        ul.pager#pagers(data-current="#{currentPage}")
+            li
+                a(href='/?p=#{pre}&sort=#{sort}&sortid=#{sortid}&name='+name+'&product='+product+'&builder='+builder+'') Previous
+            li
+                a(href='/?p=#{latter}&sort=#{sort}&sortid=#{sortid}&name='+name+'&product='+product+'&builder='+builder+'') Next
+        script(src="/js/sort.js" defer)

@@ -1,0 +1,32 @@
+extends ../layout
+block content
+    .container
+        .row
+            table.table.table-hover.table-bordered
+                thead
+                    tr
+                        th 用户名
+                        th 录入时间
+                        th 更新
+                        th 删除
+                tbody
+                    each user in users
+                        tr(class="item-id-#{user._id}")
+                            td #{user.name}
+                            td #{moment(user.meta.createAt).format('MM/DD/YYYY')}
+                            td
+                                a.btn.btn-default(target="_self",href="/admin/user/update/#{user._id}") 修改
+                            td
+                                button.btn.btn-danger.del(type="button",data-id="#{user._id}",title="User Delete",data-container="body",data-toggle="popover",data-placement="left") 删除
+        ul.pagination
+            - for(var i=0;i<totalPage;i++){
+            - if(currentPage == (i+1)){
+            li.active
+                span #{currentPage}
+            - }
+            - else{
+            li
+                a(href='/admin/user/list?p=#{i}') #{i+1}
+            - }
+            - }
+    script(src="/js/user.js")

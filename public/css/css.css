@@ -1,0 +1,39 @@
+#adminloginid{
+    cursor:pointer
+}
+.glyphicon{
+    position: relative;
+    top: -2px;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-chevron-down:before {
+    content: "";
+}
+.glyphicon-chevron-down:after {
+    content: "\e114";
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+.thhover:hover{
+    cursor: pointer;
+}
+
+.glyphicon-chevron-up:before {
+    content: "";
+}
+.glyphicon-chevron-up:after {
+    content: "\e113";
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+.form-control{
+    width: 100%;
+}
+

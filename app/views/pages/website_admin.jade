@@ -1,0 +1,82 @@
+extends ../bootstraptimelayout
+block content
+    .container
+        .row
+            form.form-horizontal(method="post",action="/admin/website/save")
+                if website._id
+                    input(type='hidden',name="website[_id]",value=website._id)
+                .form-group
+                    label.col-sm-3.control-label(for="inputName") 网站名称
+                    .col-sm-9
+                        input#inputName.form-control(type="text",name="website[name]",value=website.name)
+                .form-group
+                    label.col-sm-3.control-label(for="inputBuilder") 建设者
+                    .col-sm-9
+                        input#inputBuilder.form-control(type="text",name="website[builder]",value=website.builder)
+                .form-group
+                    label.col-sm-3.control-label(for="inputWebcategory") 网站类别
+                    .col-sm-9
+                        input#inputWebcategory.form-control(type="text",name="website[webcategory]",value=website.webcategory)
+                .form-group
+                    label.col-sm-3.control-label(for="inputProduct") 网站产品
+                    .col-sm-9
+                        input#inputProduct.form-control(type="text",name="website[product]",value=website.product)
+                .form-group
+                    label.col-sm-3.control-label(for="inputLanguage") 语种
+                    .col-sm-9
+                        input#inputLanguage.form-control(type="text",name="website[language]",value=website.language)
+                .form-group
+                    label.col-sm-3.control-label(for="inputAccount") 账号
+                    .col-sm-9
+                        input#inputAccount.form-control(type="text",name="website[account]",value=website.account)
+                .form-group
+                    label.col-sm-3.control-label(for="inputPassword") 密码
+                    .col-sm-9
+                        input#inputPassword.form-control(type="text",name="website[password]",value=website.password)
+                .form-group
+                    label.col-sm-3.control-label(for="inputServerip") 服务器ip
+                    .col-sm-9
+                        input#inputServerip.form-control(type="text",name="website[serverip]",value=website.serverip)
+                .form-group
+                    label.col-sm-3.control-label(for="status") 网站状态
+                    .col-sm-9
+                        input#inputStatus.form-control(type="text",name="website[status]",value=website.status)
+                .form-group
+                    label.col-sm-3.control-label(for="kDate") 被K日期
+                    div(class="input-group date form_date col-md-3",data-date="",data-date-format="yyyy-mm-dd hh:ii:ss",data-link-field="dtp_input2",data-link-format="yyyy-mm-dd")
+                        input.form-control(type="text",name="website[kDate]",size="16",value=website.kDate,readonly)
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-remove
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                    input(type="hidden",id="dtp_input2",value="")
+                .form-group
+                    label.col-sm-3.control-label(for="firstDate") 第一个询盘
+                    div(class="input-group date form_date col-md-3",data-date="",data-date-format="yyyy-mm-dd hh:ii:ss",data-link-field="dtp_input2",data-link-format="yyyy-mm-dd")
+                        input.form-control(type="text",name="website[firstDate]",size="16",value=website.firstDate,readonly)
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-remove
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                    input(type="hidden",id="dtp_input2",value="")
+                .form-group
+                    label.col-sm-3.control-label(for="isStable") 询盘稳定状态
+                    .col-sm-1
+                        input#isStable(type="hidden",name="website[isStable]")
+                        input#isStable_checkbox.form-control(type="checkbox",checked="website[isStable]")
+                .form-group
+                    label.col-sm-3.control-label(for="inputUptime") 上线时间
+                    div(class="input-group date form_date col-md-3",data-date="",data-date-format="yyyy-mm-dd hh:ii:ss",data-link-field="dtp_input2",data-link-format="yyyy-mm-dd")
+                        input.form-control(type="text",name="website[uptime]",size="16",value=website.uptime,readonly)
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-remove
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                    input(type="hidden",id="dtp_input2",value="")
+                .form-group
+                    .col-sm-offset-2.col-sm-9
+                    button.btn.btn-default(type="submit") 录入
+    script(src="/libs/bootstrap/dist/js/bootstrap-datetimepicker.js",charset="UTF-8")
+    script(src="/libs/bootstrap/dist/js/bootstrap-datetimepicker.zh-CN.js",charset="UTF-8")
+    script(src="/js/timeplugin.js" )
+                               
