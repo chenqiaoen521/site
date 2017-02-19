@@ -15,17 +15,16 @@ exports.xlsx = function(req,res){
     var filename = 'website'
     Website.find({},function(err,websites){
         for(var i = 0 ;i<websites.length;i++){
-            var isStable = ""
-            if(websites[i].isStable!=null&&websites[i].isStable!=undefined&&websites[i].isStable!=""){ 
+            var isStable = ''
+            if(websites[i].isStable!==null&&websites[i].isStable!==undefined&&websites[i].isStable!==''){ 
                 if(websites[i].isStable){
-                    isStable = "稳定"
+                    isStable = '稳定'
                 }else{
-                    isStable = "不稳定"
+                    isStable = '不稳定'
                 }
             }
             var temp = [websites[i].name,websites[i].builder,websites[i].webcategory,websites[i].language,
-                websites[i].product,websites[i].account,websites[i].password,websites[i].serverip,websites[i].uptime,websites[i].status
-                ,websites[i].kDate,websites[i].firstDate,isStable];
+                websites[i].product,websites[i].account,websites[i].password,websites[i].serverip,websites[i].uptime,websites[i].status,websites[i].kDate,websites[i].firstDate,isStable];
             data.push(temp)
         }
         var newPath = path.join(__dirname,'../../','/public/upload/'+filename+'.xls')
@@ -95,9 +94,9 @@ exports.list = function(req,res){
                     is_admin:'true',
                     totalPage:Math.ceil(count / page_size),
                     currentUrl:'/admin/website/list',
-                    name:"",
-                    product:"",
-                    builder:""
+                    name:'',
+                    product:'',
+                    builder:''
                 })
             })
     })
@@ -149,9 +148,9 @@ exports.websiteAdminFilter = function (req,res,next){
                         is_admin:'true',
                         totalPage:Math.ceil(count / page_size),
                         currentUrl:'/admin/website/list',
-                        name:"",
-                        product:"",
-                        builder:""
+                        name:'',
+                        product:'',
+                        builder:''
                     })
                 })
         })

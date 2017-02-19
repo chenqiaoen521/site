@@ -12,15 +12,15 @@ module.exports = function(app) {
         return next()
     })
 //index page
-    app.get('/',User.signinRequired,Index.index2 )
-    app.get('/lantern',User.signinRequired,User.kingRequired,Index.lantern)
+    app.get('/',Index.index )
+    app.get('/lantern',User.signinRequired,Index.lantern)
 
 //signup
     app.post('/user/signup',User.signup )
     app.get('/admin/user/list',User.signinRequired,User.adminRequired, User.userlist)
-    app.delete('/admin/user/del',User.signinRequired,User.kingRequired, User.del)
-    app.get('/admin/user/update/:id',User.signinRequired,User.kingRequired, User.update)
-    app.post('/admin/user/save',User.signinRequired,User.kingRequired, User.save)
+    app.delete('/admin/user/del',User.signinRequired, User.del)
+    app.get('/admin/user/update/:id',User.signinRequired, User.update)
+    app.post('/admin/user/save',User.signinRequired, User.save)
     app.post('/user/signin', User.signin)
     app.get('/signin',User.showSignin)
     app.get('/signup',User.showSignup)
@@ -29,28 +29,28 @@ module.exports = function(app) {
 
 //movie
 //detail page
-    app.get('/imovie',User.signinRequired,User.kingRequired,Index.index)
-    app.get('/movie/:id',User.signinRequired,User.kingRequired,Movie.detail)
+    app.get('/imovie',User.signinRequired,Index.index)
+    app.get('/movie/:id',User.signinRequired,Movie.detail)
 //admin update movie
-    app.get('/admin/movie/update/:id',User.signinRequired,User.kingRequired,Movie.update)
+    app.get('/admin/movie/update/:id',User.signinRequired,Movie.update)
 //admin post movie
-    app.post('/admin/movie/save',User.signinRequired,User.kingRequired,Movie.savePoster,Movie.save)
+    app.post('/admin/movie/save',User.signinRequired,Movie.savePoster,Movie.save)
 //list page
-    app.get('/admin/movie/list',User.signinRequired,User.kingRequired, Movie.list)
+    app.get('/admin/movie/list',User.signinRequired, Movie.list)
 //admin new page
-    app.get('/admin/movie/new',User.signinRequired,User.kingRequired,Movie.new)
+    app.get('/admin/movie/new',User.signinRequired,Movie.new)
 //list delete movie
-    app.delete('/admin/movie/list',User.signinRequired,User.kingRequired,Movie.del)
+    app.delete('/admin/movie/list',User.signinRequired,Movie.del)
 
 //comment save
     app.post('/user/comment',User.signinRequired,Comment.save)
 
 
 //category new
-    app.get('/admin/category/new',User.signinRequired,User.kingRequired,Category.new)
-    app.delete('/admin/category/del',User.signinRequired,User.kingRequired,Category.del)
-    app.post('/admin/category',User.signinRequired,User.kingRequired,Category.save)
-    app.get('/admin/category/list',User.signinRequired,User.kingRequired,Category.list)
+    app.get('/admin/category/new',User.signinRequired,Category.new)
+    app.delete('/admin/category/del',User.signinRequired,Category.del)
+    app.post('/admin/category',User.signinRequired,Category.save)
+    app.get('/admin/category/list',User.signinRequired,Category.list)
 
 //results
     app.get('/results',Index.search)

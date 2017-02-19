@@ -198,6 +198,7 @@ exports.signinRequired = function(req,res,next){
             next()
         }
 }
+
 exports.adminRequired = function(req,res,next){
     var _user = req.session.user
     var role = _user.role
