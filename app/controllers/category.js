@@ -13,13 +13,41 @@ exports.new = function(req,res){
 
 exports.save = function(req,res) {
     var _category = req.body.category
-    var catetory = new Category(_category)
-    catetory.save(function(err,catetory){
-        if(err){
-            console.log(err)
-        }
-        res.redirect('/admin/category/list')
-    })
+    if (_category._id){
+        Category.findById(_category._id,function(err,category){
+            if(err){
+                console.log(err)
+            }
+            var category_mod = _.extend(category, _category)
+                category_mod.save(function(err,category_mod){
+                    if(err){
+                        console.log(err) 
+                    }
+                    res.redirect('/admin/category/list')
+                })
+        })
+    } else {
+        var catetory = new Category(_category)
+        catetory.save(function(err,catetory){
+            if(err){
+                console.log(err)
+            }
+            res.redirect('/admin/category/list')
+        })
+    }
+}
+
+exports.update = function(req,res) {
+    var id = req.params.id
+    if (id) {
+        Category.findById(id, function (err, category) {
+            if(err){console.log(err)}
+            res.render('category_admin',{
+                title:'分类更新页面',
+                category:category
+            })
+        })
+    }
 }
 
 

@@ -48,6 +48,7 @@ module.exports = function(app) {
 
 //category new
     app.get('/admin/category/new',User.signinRequired,Category.new)
+    app.get('/admin/category/update/:id',User.signinRequired,Category.update)
     app.delete('/admin/category/del',User.signinRequired,Category.del)
     app.post('/admin/category',User.signinRequired,Category.save)
     app.get('/admin/category/list',User.signinRequired,Category.list)
