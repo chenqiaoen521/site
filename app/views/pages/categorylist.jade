@@ -7,7 +7,6 @@ block content
                     tr
                         th 分类名称
                         th 录入时间
-                        th 查看
                         th 更新
                         th 删除
                 tbody
@@ -16,9 +15,7 @@ block content
                             td #{item.name}
                             td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
                             td
-                                a.btn.btn-default(target="_blank",href="../movie/#{item._id}")查看
-                            td
-                                a.btn.btn-default(target="_blank",href="../admin/update/movie/#{item._id}") 修改
+                                a.btn.btn-default(target="_blank",href="../../admin/category/update/#{item._id}") 修改
                             td
                                 button.btn.btn-danger.del(type="button",data-id="#{item._id}",title="User Delete",data-container="body",data-toggle="popover",data-placement="left") 删除
         script(src="/js/category.js")
